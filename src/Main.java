@@ -33,6 +33,30 @@ void main() {
     objects[0] = "Stephen";
     objects[1] = new StringBuilder("Stephen");
 
+
+    //CALLING ENUM
+
+    DayOfTheWeek weekDay = DayOfTheWeek.TUE;
+    System.out.println(weekDay);
+
+    for (int i = 0; i < 10; i++) {
+        weekDay = getRandomDay();
+
+
+        System.out.printf("Name is %s, ordinal value = %d%n",
+                weekDay.name(), weekDay.ordinal());
+
+        if (weekDay == DayOfTheWeek.FRI){
+            System.out.println("Found Friday!!!");
+        }
+    }
+    }
+    public static DayOfTheWeek getRandomDay(){
+    int randomInteger = new Random().nextInt(7);
+    var allDays = DayOfTheWeek.values();
+    return allDays[randomInteger];
+
+
     }
 
 
