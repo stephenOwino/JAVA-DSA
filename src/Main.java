@@ -13,17 +13,17 @@ void main() {
 //        System.out.println(k);
 
 
-        int[] newArray;
-        newArray = new int[5];
-        for (int i = 0; i < newArray.length; i++) {
-            newArray[i] = newArray.length - i;
+    int[] newArray;
+    newArray = new int[5];
+    for (int i = 0; i < newArray.length; i++) {
+        newArray[i] = newArray.length - i;
 
-        }
-        for (int i = 0; i < newArray.length; i++) {
-            System.out.print(newArray[i] + " ");
-        }
-        //enhanced for loop
-    for (int element : newArray){
+    }
+    for (int i = 0; i < newArray.length; i++) {
+        System.out.print(newArray[i] + " ");
+    }
+    //enhanced for loop
+    for (int element : newArray) {
         System.out.print(element + " ");
     }
     System.out.println(Arrays.toString(newArray));
@@ -32,6 +32,44 @@ void main() {
     Object[] objects = new Object[3];
     objects[0] = "Stephen";
     objects[1] = new StringBuilder("Stephen");
+
+
+    //CALLING ENUM
+
+    DayOfTheWeek weekDay = DayOfTheWeek.TUE;
+    System.out.println(weekDay);
+
+    for (int i = 0; i < 10; i++) {
+        weekDay = getRandomDay();
+
+//
+//        System.out.printf("Name is %s, ordinal value = %d%n",
+//                weekDay.name(), weekDay.ordinal());
+//
+//        if (weekDay == DayOfTheWeek.FRI) {
+//            System.out.println("Found Friday!!!");
+//        }
+        switchDayOfTheWeek(weekDay);
+    }
+
+    for (Topping topping : Topping.values()){
+        System.out.println(topping.name() + " : " + topping.getPrice());
+    }
+}
+public static void switchDayOfTheWeek(DayOfTheWeek weekDay){
+    int weekDayInteger = weekDay.ordinal() + 1;
+    switch (weekDay){
+        case WED -> System.out.println("Wednesday is  Day " + weekDayInteger);
+        case SAT -> System.out.println("Saturday is Day " + weekDayInteger);
+        default -> System.out.println(weekDay.name().charAt(0) +
+                weekDay.name().substring(1).toLowerCase() + " day is " + weekDayInteger);
+    }
+}
+    public static DayOfTheWeek getRandomDay(){
+    int randomInteger = new Random().nextInt(7);
+    var allDays = DayOfTheWeek.values();
+    return allDays[randomInteger];
+
 
     }
 
